@@ -1,0 +1,115 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion '27.0.2'
+    useLibrary 'org.apache.http.legacy'
+    //android 6.0 之后 取消支持 Apache HTTP 客户端，要继续使用 Apache HTTP API，您必须先在 build.gradle 文件中声明以下编译时依赖项：
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 23
+        versionCode 1
+        //:主要是用于版本升级所用，是INT类型的
+        versionName "1.0"
+        //这个是我们常说明的版本号，由三部分组成<major>.<minor>.<point>,该值是个字符串，可以显示给用户
+        //testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //单元测试
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+            minifyEnabled false //这是关键的，我的问题就是出在这里
+        }
+    }
+
+    //自定义资源目录
+    sourceSets {
+        main {
+            res.srcDirs = [
+                    'src/main/res',
+                    'src/main/res/base',
+                    'src/main/res/zxing',
+            ]
+            jniLibs.srcDirs = [
+                    'libDir',
+            ]
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    //为了解决部分第三方库重复打包了META-INF的问题
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+
+    dexOptions {
+        preDexLibraries false
+        jumboMode true
+        javaMaxHeapSize "4g"
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libDir')
+    //android 基本支持库
+    compile 'com.android.support:support-v4:27+'
+    compile 'com.android.support:appcompat-v7:27+'
+
+    compile 'com.android.support:cardview-v7:27+'
+
+
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:design:27+'
+    compile 'com.android.support:recyclerview-v7:27+'
+
+
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    compile 'com.jakewharton:butterknife:8.4.0'//状态栏设置
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'//注解
+    compile 'com.github.florent37:viewanimator:1.0.5'//动画帮助
+    compile 'org.greenrobot:eventbus:3.0.0'//消息总线处理
+    compile 'com.lzy.widget:imagepicker:0.6.1'//图片选择
+    compile 'com.github.LuckSiege.PictureSelector:picture_library:v2.1.9'
+
+    compile 'com.github.bumptech.glide:glide:4.5.0'//图片加载
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'////如果glideapp找不到 build-make project
+    compile 'com.j256.ormlite:ormlite-core:4.48'//本地数据库存储
+    compile 'com.j256.ormlite:ormlite-android:4.48'
+    compile 'com.journeyapps:zxing-android-embedded:3.5.0'//二维码扫码
+    compile 'org.xutils:xutils:3.5.0'//网络请求
+    //compile 'com.github.lecho:hellocharts-android:v1.5.8'//图表控件
+//    compile 'fm.jiecao:jiecaovideoplayer:5.8.1'//视频控件
+    compile 'com.wang.avi:library:2.1.3'//加载动画
+
+
+    compile 'com.google.code.gson:gson:2.3.1'
+    compile 'com.hedgehog.ratingbar:app:1.1.2'
+//    compile 'com.shuyu:GSYVideoPlayer:2.0.6'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+
+    compile "com.daimajia.swipelayout:library:1.2.0@aar"//侧滑菜单
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-4'//下拉刷新
+    compile 'id.zelory:compressor:2.1.0'//图片压缩
+    compile 'com.android.support:multidex:1.0.2'//并将 Dalvik 可执行文件分包库添加为依赖项
+    compile 'me.drakeet.support:toastcompat:1.0.2'
+    compile 'com.tubb.smrv:swipemenu-recyclerview:5.4.4'
+
+    compile 'io.paperdb:paperdb:2.6'//数据库
+}

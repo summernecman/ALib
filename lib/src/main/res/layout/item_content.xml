@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:background="@color/white"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:paddingLeft="@dimen/dimen_item_content_left_padding">
+
+    <ImageView
+        android:layout_marginLeft="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/iv_left_icon"
+        android:src="@drawable/icon_arraw"
+        android:layout_width="@dimen/dimen_item_content_left_icon_size"
+        android:layout_height="@dimen/dimen_item_content_left_icon_size" />
+
+
+    <TextView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/iv_left_icon"
+        android:id="@+id/tv_left_content"
+        android:layout_marginLeft="8dp"
+        android:text="文字内容"
+        android:textSize="15.5sp"
+        android:textColor="@color/hv_color_text_title"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+
+
+    <TextView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/tv_left_content"
+        android:visibility="gone"
+        android:id="@+id/tv_mid"
+        android:layout_marginLeft="15dp"
+        android:text="文字内容"
+        android:textSize="13sp"
+        android:textColor="@color/color_grey_500"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+
+
+
+    <ImageView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_goneMarginRight="5dp"
+        android:id="@+id/iv_right_icon"
+        android:layout_marginRight="@dimen/dimen_item_content_right_txt_right_padding"
+        android:src="@drawable/icon_arraw"
+        android:layout_width="@dimen/dimen_item_content_right_icon_size"
+        android:layout_height="@dimen/dimen_item_content_right_icon_size" />
+
+
+    <TextView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/iv_right_icon"
+        android:textSize="12.5sp"
+        android:layout_centerInParent="true"
+        android:text=""
+        android:gravity="center"
+        android:id="@+id/iv_right_content"
+        android:layout_marginRight="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <View
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/divide"
+        android:background="@color/color_item_content_gap"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_item_content_gap_size"/>
+
+</android.support.constraint.ConstraintLayout>

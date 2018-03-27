@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dimen_item_content_h">45dp</dimen>
+    <dimen name="dimen_item_content_txt_size">17sp</dimen>
+    <dimen name="dimen_item_content_left_icon_size">17dp</dimen>
+    <dimen name="dimen_item_content_right_icon_size">17dp</dimen>
+    <dimen name="dimen_item_content_gap_size">1px</dimen>
+    <dimen name="dimen_item_content_left_padding">10dp</dimen>
+    <dimen name="dimen_item_content_right_txt_right_padding">5dp</dimen>
+
+    <color name="color_item_content_gap">@color/color_grey_300</color>
+    <color name="color_item_content">@color/white</color>
+    <color name="color_item_content_left_txt_color">@color/black</color>
+    <color name="color_item_content_right_txt_color">@color/black</color>
+    <color name="transparent">#00000000</color>
+
+
+
+
+    <declare-styleable name="style_common">
+        <attr name="color_bg" format="color"/>
+        <attr name="color_txt_right" format="color"/>
+        <attr name="txt_right_bg" format="reference"/>
+        <attr name="bg_divider" format="reference"/>
+        <attr name="txt_right_left" format="string"/>
+        <attr name="txt_mid" format="string"/>
+        <attr name="iv_left" format="reference"/>
+        <attr name="iv_right" format="reference"/>
+        <attr name="txt_left" format="string"/>
+        <attr name="txt_right" format="string"/>
+        <attr name="boo_edit" format="boolean"/>
+        <attr name="iv_right2" format="reference"/>
+        <attr name="minwidth" format="dimension"/>
+        <attr name="boo_one" format="boolean"/>
+        <attr name="boo_two" format="boolean"/>
+        <attr name="color_one" format="color"/>
+        <attr name="color_two" format="color"/>
+        <attr name="color_stroke" format="color"/>
+        <attr name="color_stroke_two" format="color"/>
+        <attr name="color_txt" format="color"/>
+        <attr name="color_txt_two" format="color"/>
+        <attr name="stroke" format="dimension"/>
+        <attr name="stroke_two" format="dimension"/>
+        <attr name="corner" format="dimension"/>
+        <attr name="corner_two" format="dimension"/>
+        <attr name="txt_two" format="string"/>
+        <attr name="txt_three" format="string"/>
+        <attr name="txt_maxlenth" format="integer"/>
+        <attr name="inputType" format="integer"/>
+        <attr name="txt_hint" format="string"/>
+
+    </declare-styleable>
+
+
+    <dimen name="hv_dimen_text_big">27sp</dimen>
+
+
+    <dimen name="hv_dimen_text_title_aaaaa">22sp</dimen>
+    <dimen name="hv_dimen_text_title_aaaa">21sp</dimen>
+    <dimen name="hv_dimen_text_title_aaa">20sp</dimen>
+    <dimen name="hv_dimen_text_title_aa">19sp</dimen>
+    <dimen name="hv_dimen_text_title_a">18sp</dimen>
+    <dimen name="hv_dimen_text_title">17sp</dimen>
+    <color name="hv_color_text_title">@color/color_grey_700</color>
+
+
+
+    <dimen name="hv_dimen_text_a">16sp</dimen>
+    <dimen name="hv_dimen_text_aa">17sp</dimen>
+    <dimen name="hv_dimen_text_aaa">18sp</dimen>
+    <dimen name="hv_dimen_text">15sp</dimen>
+    <color name="hv_color_text">@color/color_grey_500</color>
+
+    <dimen name="hv_dimen_text_date_a">14sp</dimen>
+    <dimen name="hv_dimen_text_date_aa">15sp</dimen>
+    <dimen name="hv_dimen_text_date_aaa">16sp</dimen>
+    <dimen name="hv_dimen_text_date">13sp</dimen>
+    <color name="hv_color_text_date">@color/color_grey_500</color>
+
+
+    <dimen name="dimen_frag_content_margin">7sp</dimen>
+    <dimen name="dimen_frag_padding">7sp</dimen>
+    <dimen name="dimen_recylce_item_inner_margin">5sp</dimen>
+    <dimen name="dimen_recylce_item_margin">7sp</dimen>
+    <dimen name="dimen_recylce_item_padding">7sp</dimen>
+    <dimen name="dimen_recylce_item_title_txtsize">19.5sp</dimen>
+    <dimen name="dimen_recylce_item_subtitle_txtsize">17sp</dimen>
+    <color name="color_recylce_item_title_txtcolor">@color/color_grey_800</color>
+    <dimen name="dimen_recylce_item_date_txtsize">15sp</dimen>
+    <color name="color_recylce_item_date_txtcolor">@color/color_grey_500</color>
+    <dimen name="dimen_recylce_item_content_txtsize">16sp</dimen>
+    <color name="color_recylce_item_content_txtcolor">@color/color_grey_600</color>
+    <dimen name="dimen_recylce_item_btn_txtsize">15sp</dimen>
+    <color name="color_recylce_item_btn_txtcolor">@color/white</color>
+
+
+
+
+    <dimen name="dimen_viewpage_title_txtsize">16sp</dimen>
+    <color name="color_viewpage_title_txtcolor">@color/white</color>
+
+
+    <color name="color_frag_root_bgcolor">@color/color_grey_50</color>
+</resources>

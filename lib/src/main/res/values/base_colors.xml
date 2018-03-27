@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_base">@color/white</color>
+    <color name="color_base_dark">#4CAF50</color>
+    <color name="color_base_statusbar">#76BC55</color>
+    <color name="color_base_bottommenu">#76BC55</color>
+    <color name="color_base_graybg">@color/color_grey_100</color>
+    <color name="color_base_txt_black">@color/black</color>
+
+    <color name="color_base_txt_gray">@color/color_grey_600</color>
+
+    <color name="color_bg_refresh">#333333</color>
+
+    <color name="common_main_color">#ffffff</color>
+
+    <color name="color_dark_red">#f59f9f</color>
+
+    <color name="color_base_nurse">#10c55b</color>
+
+
+    <color name="color_divide_line">#aaaaaa</color>
+
+    <color name="color_block_back">@color/color_grey_200</color>
+
+
+    <color name="color_dialog_bg">#e0000000</color>
+
+</resources>

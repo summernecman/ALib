@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="item_txt"
+            type="String" />
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        >
+        <TextView
+            android:textSize="20sp"
+            android:id="@+id/tv_txt"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="@{item_txt}"
+            android:layout_width="100dp"
+            android:layout_height="35dp" />
+
+        <View
+            android:background="@color/color_item_content_gap"
+            android:layout_width="100dp"
+            android:layout_height="1px"/>
+    </LinearLayout>
+</layout>

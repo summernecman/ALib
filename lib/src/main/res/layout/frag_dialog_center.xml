@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_item="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_dialog_list"
+            type="String" />
+    </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/llll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:background="@color/white"
+            android:elevation="10dp"
+            android:layout_centerInParent="true"
+            android:id="@+id/rl_lll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</layout>
