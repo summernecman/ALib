@@ -164,4 +164,8 @@ public class BottomMenuView extends LinearLayout implements View.OnClickListener
             }
         }
     }
+
+    public ArrayList<View> getTabViews() {
+        return tabViews;
+    }
 }
