@@ -6,6 +6,9 @@ import android.databinding.BaseObservable;
 
 import java.io.Serializable;
 
+import lombok.Getter;
+
+@Getter
 public class BaseBean extends BaseObservable implements Serializable {
 
 }
