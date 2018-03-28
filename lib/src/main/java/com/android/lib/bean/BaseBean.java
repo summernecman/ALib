@@ -8,7 +8,6 @@ import java.io.Serializable;
 
 import lombok.Getter;
 
-@Getter
 public class BaseBean extends BaseObservable implements Serializable {
 
 }
