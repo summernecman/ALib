@@ -11,8 +11,8 @@ import com.android.lib.util.ScreenUtil;
 import com.android.lib.util.activity.ActivityUtil;
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.view.CropImageView;
+import com.raizlabs.android.dbflow.config.FlowManager;
 
-import io.paperdb.Paper;
 import org.xutils.x;
 
 import java.util.List;
@@ -37,12 +37,11 @@ public  abstract  class LibAplication extends MultiDexApplication {
         initSysConfig();
         initImagePicker();
         initXutils();
-        //ZXingLibrary.initDisplayOpinion(this);
     }
 
 
     protected void initDB(){
-        Paper.init(this);
+        FlowManager.init(this);
     }
 
     /**

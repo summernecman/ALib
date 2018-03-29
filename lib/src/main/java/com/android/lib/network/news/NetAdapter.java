@@ -16,7 +16,6 @@ import org.json.JSONTokener;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-import io.paperdb.Paper;
 
 public  class NetAdapter<A> implements NetI<A> {
 
