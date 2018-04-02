@@ -33,6 +33,20 @@ import java.util.Map;
  */
 public class NetGet {
 
+
+    private static Deal deal;
+
+    public static void setDeal(Deal deal) {
+        NetGet.deal = deal;
+    }
+
+    public interface Deal{
+        public void onSuccess(BaseResBean baseResBean);
+        public void onError(Throwable ex, boolean isOnCallback);
+        public void onCancelled(Callback.CancelledException cex);
+        public void onFinished();
+    }
+
     public static boolean test = false;
 
     private NetGet() {
@@ -99,9 +113,15 @@ public class NetGet {
                     BaseResBean res = new BaseResBean();
                     res.setErrorCode(ValueConstant.ERROR_CODE_RES_NULL);
                     res.setErrorMessage(ValueConstant.ERROR_STR_RES_NULL);
+                    if(deal!=null){
+                        deal.onSuccess(res);
+                    }
                     netI.onNetFinish(false, url, res);
                 } else {
                     BaseResBean baseResBean = GsonUtil.getInstance().fromJson(response,BaseResBean.class);
+                    if(deal!=null){
+                        deal.onSuccess(baseResBean);
+                    }
                     netI.onNetFinish(true, url, baseResBean);
                 }
 
@@ -114,17 +134,27 @@ public class NetGet {
                 baseResBean.setErrorCode(ValueConstant.ERROR_CODE_VOLLEY_FAIL);
                 baseResBean.setErrorMessage(ex.getMessage() == null ? "" : ex.getMessage());
                 baseResBean.setException(true);
+                if(deal!=null){
+                    deal.onError(ex,isOnCallback);
+                }
+
                 netI.onNetFinish(false, url, baseResBean);
                 LogUtil.E(ex == null ? "Throwable" : "Throwable-->" + ex.getMessage());
             }
 
             @Override
             public void onCancelled(CancelledException cex) {
+                if(deal!=null){
+                    deal.onCancelled(cex);
+                }
                 LogUtil.E("onCancelled-->" + cex);
             }
 
             @Override
             public void onFinished() {
+                if(deal!=null){
+                    deal.onFinished();
+                }
                 LogUtil.E("onFinished-->");
             }
         });
@@ -174,9 +204,15 @@ public class NetGet {
                     BaseResBean res = new BaseResBean();
                     res.setErrorCode(ValueConstant.ERROR_CODE_RES_NULL);
                     res.setErrorMessage(ValueConstant.ERROR_STR_RES_NULL);
+                    if(deal!=null){
+                        deal.onSuccess(res);
+                    }
                     netI.onNetFinish(false, url, res);
                 } else {
                     BaseResBean baseResBean = GsonUtil.getInstance().fromJson(response,BaseResBean.class);
+                    if(deal!=null){
+                        deal.onSuccess(baseResBean);
+                    }
                     netI.onNetFinish(true, url, baseResBean);
                 }
             }
@@ -187,6 +223,9 @@ public class NetGet {
                 baseResBean.setErrorCode(ValueConstant.ERROR_CODE_VOLLEY_FAIL);
                 baseResBean.setErrorMessage(ex.getMessage() == null ? "" : ex.getMessage());
                 baseResBean.setException(true);
+                if(deal!=null){
+                    deal.onError(ex,isOnCallback);
+                }
                 netI.onNetFinish(false, url, baseResBean);
                 LogUtil.E(ex == null ? "Throwable" : "Throwable-->" + ex.getMessage());
             }
@@ -194,11 +233,17 @@ public class NetGet {
             @Override
             public void onCancelled(CancelledException cex) {
                 LogUtil.E("onCancelled-->" + cex);
+                if(deal!=null){
+                    deal.onCancelled(cex);
+                }
             }
 
             @Override
             public void onFinished() {
                 LogUtil.E("onFinished-->");
+                if(deal!=null){
+                    deal.onFinished();
+                }
             }
         });
     }
@@ -248,10 +293,16 @@ public class NetGet {
                     BaseResBean res = new BaseResBean();
                     res.setErrorCode(ValueConstant.ERROR_CODE_RES_NULL);
                     res.setErrorMessage(ValueConstant.ERROR_STR_RES_NULL);
+                    if(deal!=null){
+                        deal.onSuccess(res);
+                    }
                     netI.onNetFinish(false, url, res);
                 } else {
                     BaseResBean baseResBean = GsonUtil.getInstance().fromJson(response,BaseResBean.class);
                     LogUtil.E(baseResBean.getResult());
+                    if(deal!=null){
+                        deal.onSuccess(baseResBean);
+                    }
                     netI.onNetFinish(true, url, baseResBean);
                 }
             }
@@ -262,17 +313,26 @@ public class NetGet {
                 baseResBean.setErrorCode(ValueConstant.ERROR_CODE_VOLLEY_FAIL);
                 baseResBean.setErrorMessage(ex.getMessage() == null ? "" : ex.getMessage());
                 baseResBean.setException(true);
+                if(deal!=null){
+                    deal.onError(ex,isOnCallback);
+                }
                 netI.onNetFinish(false, url, baseResBean);
                 LogUtil.E(ex == null ? "Throwable" : "Throwable-->" + ex.getMessage());
             }
 
             @Override
             public void onCancelled(CancelledException cex) {
+                if(deal!=null){
+                    deal.onCancelled(cex);
+                }
                 LogUtil.E("onCancelled-->" + cex);
             }
 
             @Override
             public void onFinished() {
+                if(deal!=null){
+                    deal.onFinished();
+                }
                 LogUtil.E("onFinished-->");
             }
         });
@@ -320,9 +380,15 @@ public class NetGet {
                     BaseResBean res = new BaseResBean();
                     res.setErrorCode(ValueConstant.ERROR_CODE_RES_NULL);
                     res.setErrorMessage(ValueConstant.ERROR_STR_RES_NULL);
+                    if(deal!=null){
+                        deal.onSuccess(res);
+                    }
                     netI.onNetFinish(false, url, res);
                 } else {
                     BaseResBean baseResBean = GsonUtil.getInstance().fromJson(response.toString(), BaseResBean.class);
+                    if(deal!=null){
+                        deal.onSuccess(baseResBean);
+                    }
                     netI.onNetFinish(true, url, baseResBean);
                 }
             }
@@ -333,17 +399,26 @@ public class NetGet {
                 baseResBean.setErrorCode(ValueConstant.ERROR_CODE_VOLLEY_FAIL);
                 baseResBean.setErrorMessage(ex.getMessage() == null ? "" : ex.getMessage());
                 baseResBean.setException(true);
+                if(deal!=null){
+                    deal.onError(ex,isOnCallback);
+                }
                 netI.onNetFinish(false, url, baseResBean);
                 LogUtil.E(ex == null ? "" : ex.getMessage());
             }
 
             @Override
             public void onCancelled(CancelledException cex) {
+                if(deal!=null){
+                    deal.onCancelled(cex);
+                }
                 LogUtil.E(cex);
             }
 
             @Override
             public void onFinished() {
+                if(deal!=null){
+                    deal.onFinished();
+                }
                 LogUtil.E("");
             }
         });

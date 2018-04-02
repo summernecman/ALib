@@ -19,7 +19,7 @@ import java.lang.reflect.Type;
 
 public  class NetAdapter<A> implements NetI<A> {
 
-    public static boolean cache = true;
+    public static boolean cache = false;
     protected Context context;
     protected String url;
 
