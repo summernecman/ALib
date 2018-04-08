@@ -10,7 +10,4 @@ import com.android.lib.databinding.FragDialogCenterBinding;
 public class DialogCenterUIOpe extends BaseUIOpe<FragDialogCenterBinding> {
 
 
-    public DialogCenterUIOpe(Context context) {
-        super(context);
-    }
 }

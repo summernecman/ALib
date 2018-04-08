@@ -19,49 +19,38 @@ import com.android.lib.databinding.ActBaseuiBinding;
  */
 public class BaseUIOpe<A extends ViewDataBinding> {
 
-    public AppViewHolder viewHolder;
-    public int[] variableId;
-    public A bind;
-    protected Context context;
-    protected  BaseUIFrag frag;
-
-
-
+    private A bind;
+    private Context context;
+    private  BaseUIFrag frag;
 
     public BaseUIOpe(){
 
     }
 
 
-    public BaseUIOpe(Context context) {
+    public void init(Context context) {
         this.context = context;
         bind = initViewDataBinding();
-        viewHolder = new AppViewHolder(bind);
         bind.executePendingBindings();
     }
 
-    public BaseUIActivity getActivity(){
-        if(frag!=null ){
-            return frag.getBaseUIAct();
-        }else{
-            return (BaseUIActivity) context;
-        }
+    public void init(BaseUIFrag frag) {
+        this.frag = frag;
+        this.context = frag.getBaseUIAct();
+        bind = initViewDataBinding();
+        bind.executePendingBindings();
     }
+
 
     public void copy(BaseUIOpe baseUIOpe){
         this.context = baseUIOpe.context;
         this.frag = baseUIOpe.frag;
         this.bind = (A) baseUIOpe.bind;
-        this.viewHolder = new AppViewHolder(this.bind);
         initUI();
     }
 
 
     public void initUI(){
-
-    }
-
-    public void initDelay(){
 
     }
 
@@ -98,38 +87,16 @@ public class BaseUIOpe<A extends ViewDataBinding> {
         return bind;
     }
 
-    public int[] getVariableId() {
-        return variableId;
-    }
-
-    public void setVariableId(int[] variableId) {
-        this.variableId = variableId;
-    }
 
     public BaseUIFrag getFrag() {
         return frag;
     }
 
-    public void setFrag(BaseUIFrag frag) {
-        this.frag = frag;
-        this.context = frag.getActivity();
-        if(bind==null){
-            bind = initViewDataBinding();
-            if(bind!=null){
-                viewHolder = new AppViewHolder(bind);
-                bind.executePendingBindings();
-            }
-        }
-    }
-
-    public void setContext(Context context) {
-        this.context = context;
-        if(bind==null){
-            bind = initViewDataBinding();
-            if(bind!=null){
-                viewHolder = new AppViewHolder(bind);
-                bind.executePendingBindings();
-            }
+    public BaseUIActivity getActivity(){
+        if(frag!=null ){
+            return frag.getBaseUIAct();
+        }else{
+            return (BaseUIActivity) context;
         }
     }
 }

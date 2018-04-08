@@ -18,7 +18,7 @@ public class DialogListUIOpe extends BaseUIOpe<FragDialogListBinding> {
 
 
     public void init(List<String> strs, ViewListener listener){
-        bind.recycle.setLayoutManager(new LinearLayoutManager(context));
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(getActivity(), R.layout.item_txt, BR.item_txt,strs,listener));
+        getBind().recycle.setLayoutManager(new LinearLayoutManager(getActivity()));
+        getBind().recycle.setAdapter(new AppsDataBindingAdapter(getActivity(), R.layout.item_txt, BR.item_txt,strs,listener));
     }
 }

@@ -65,34 +65,52 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
 
     public BaseOpes<A, B> getP() {
         if (opes == null) {
-            getaabb(getClass());
+            opes= new BaseOpes<>(null,null);
+            initaa(getClass());
+            initbb(getClass());
         }
         return opes;
     }
 
-    private BaseOpes<A, B> getaabb(Class<?> c) {
+    private void initbb(Class<?> c) {
         if (c == null) {
-            opes = (BaseOpes<A, B>) new BaseOpes<>(new BaseUIOpe<ViewDataBinding>(), new BaseDAOpe());
-            opes.getU().setContext(getActivity());
+            opes.setDa((B)(new BaseDAOpe()));
+            return;
         }
         if (c.getGenericSuperclass() instanceof ParameterizedType) {
-            Class<A> a = (Class<A>) ((ParameterizedType) c.getGenericSuperclass()).getActualTypeArguments()[0];
             Class<B> b = (Class<B>) ((ParameterizedType) c.getGenericSuperclass()).getActualTypeArguments()[1];
             try {
-                Constructor<A> ac = a.getConstructor();
                 Constructor<B> bc = b.getConstructor();
-                A aa = ac.newInstance();
-                aa.setContext(getActivity());
                 B bb = bc.newInstance();
-                opes = new BaseOpes<>(aa, bb);
+                opes.setDa(bb);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
-            getaabb(c.getSuperclass());
+            initbb(c.getSuperclass());
         }
+    }
 
-        return opes;
+
+    private void initaa(Class<?> c) {
+        if (c == null) {
+            opes.setUi((A)(new BaseUIOpe<ViewDataBinding>()));
+            opes.getU().init(getActivity());
+            return;
+        }
+        if (c.getGenericSuperclass() instanceof ParameterizedType) {
+            Class<A> a = (Class<A>) ((ParameterizedType) c.getGenericSuperclass()).getActualTypeArguments()[0];
+            try {
+                Constructor<A> ac = a.getConstructor();
+                A aa = ac.newInstance();
+                aa.init(getActivity());
+                opes.setUi(aa);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            initaa(c.getSuperclass());
+        }
     }
 
 

@@ -27,5 +27,5 @@
     <integer name="integer_time_long">2000</integer>
     <integer name="integer_time_short_a">400</integer>
     <integer name="integer_time_short_300">300</integer>
-    <integer name="integer_time_short">400</integer>
+    <integer name="integer_time_short">200</integer>
 </resources>

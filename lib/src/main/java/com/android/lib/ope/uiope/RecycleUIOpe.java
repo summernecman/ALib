@@ -15,12 +15,8 @@ import java.util.ArrayList;
 public class RecycleUIOpe extends BaseUIOpe {
 
 
-    public RecycleUIOpe(Context context) {
-        super(context);
-    }
-
     public void initRecycle(RecyclerView recyclerView, int layout, int br, ArrayList<LayoutDABean> data) {
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.setAdapter(new AppsDataBindingAdapter(context, layout, br, data));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(new AppsDataBindingAdapter(getActivity(), layout, br, data));
     }
 }

@@ -165,35 +165,35 @@ public class FragManager2  {
 
     public int getAnim1() {
         if(anim1==0){
-            anim1 =R.anim.anim_push_right_in_helf;
+            anim1 =R.anim.anim_push_right_in;
         }
         return anim1;
     }
 
     public int getAnim2() {
         if(anim2==0){
-            anim2 =R.anim.anim_push_left_out_litte;
+            anim2 =R.anim.anim_push_left_out;
         }
         return anim2;
     }
 
     public int getAnim3() {
         if(anim3==0){
-            anim3 =R.anim.anim_push_right_in_helf;
+            anim3 =R.anim.anim_push_right_in;
         }
         return anim3;
     }
 
     public int getAnim4() {
         if(anim4==0){
-            anim4 =R.anim.anim_push_left_out_litte;
+            anim4 =R.anim.anim_push_left_out;
         }
         return anim4;
     }
 
     public int getAnim5() {
         if(anim5==0){
-            anim5 =R.anim.anim_push_left_in_litter;
+            anim5 =R.anim.anim_push_left_in;
         }
         return anim5;
     }

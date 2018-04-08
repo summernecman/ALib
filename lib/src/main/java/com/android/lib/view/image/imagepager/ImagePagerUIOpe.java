@@ -11,13 +11,9 @@ import java.util.ArrayList;
 public class ImagePagerUIOpe extends BaseUIOpe<ActivityImagesVpBinding> {
 
 
-    public ImagePagerUIOpe(Context context) {
-        super(context);
-    }
-
     public void initPager(FragmentManager fragmentManager, ArrayList<String> strs, int position) {
-        bind.vpVp.setAdapter(new ImagePagerAdaper(fragmentManager, context, strs));
-        bind.vpVp.setCurrentItem(position);
+        getBind().vpVp.setAdapter(new ImagePagerAdaper(fragmentManager, getActivity(), strs));
+        getBind().vpVp.setCurrentItem(position);
 
     }
 

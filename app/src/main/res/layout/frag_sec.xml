@@ -6,18 +6,19 @@
             type="String" />
     </data>
 
-    <RelativeLayout
-        android:id="@+id/rootr"
-        android:background="@color/white"
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/container"
+        android:background="@color/blue"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-<TextView
-    android:id="@+id/tv_text"
-    android:text="123"
-   android:layout_centerInParent="true"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
-    </RelativeLayout>
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recordtitle"
+            layout="@layout/item_record_title"/>
+
+    </LinearLayout>
 </layout>

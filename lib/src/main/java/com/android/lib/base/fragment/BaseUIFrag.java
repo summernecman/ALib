@@ -1,11 +1,14 @@
 package com.android.lib.base.fragment;
 
+import android.animation.Animator;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
+import android.os.HandlerThread;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 
 import com.android.lib.R;
 import com.android.lib.base.activity.BaseUIActivity;
@@ -80,28 +83,25 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View group = inflater.inflate(getBaseUILayout(), null);
-        baseUIRoot = group.findViewById(R.id.container);
-        initaa(getClass());
-        baseUIRoot.addView(getP().getU().getBind().getRoot(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        View group = inflater.inflate(getBaseUILayout(), container,false);
         fragIs.onCreateView(inflater,container,savedInstanceState);
-        getP().getU().initUI();
-        unbinder = ButterKnife.bind(this, baseUIRoot);
-        LogUtil.E(this.getClass());
         return group;
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(final View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        unbinder = ButterKnife.bind(this, view);
         initNow();
         HandleUtil.getInstance().postDelayed(new Runnable() {
             @Override
             public void run() {
-                LogUtil.E("initDelay:"+getFrag().getClass());
-                getP().getU().initDelay();
+                baseUIRoot = view.findViewById(R.id.container);
+                initaa(baseUIFrag.getClass());
+                baseUIRoot.addView(getP().getU().getBind().getRoot(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                getP().getU().initUI();
+                unbinder = ButterKnife.bind(baseUIFrag, baseUIRoot);
                 initdelay();
-                unbinder = ButterKnife.bind(getFrag(), baseUIRoot);
             }
         }, delayTime());
         fragIs.onViewCreated(view,savedInstanceState);
@@ -110,6 +110,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
     protected int delayTime(){
         return 300;
     }
+
 
     public void initdelay() {
         if(getView()==null){
@@ -131,7 +132,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
                 public void run() {
                     on第一次显示延迟加载();
                 }
-            }, 300);
+            }, delayTime());
             isFiistVisibleinit = true;
         }
     }
@@ -188,6 +189,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
     private void initaa(Class<?> c) {
         if (c == null) {
             opes.setUi((A)(new BaseUIOpe<ViewDataBinding>()));
+            opes.getU().init(getBaseUIFrag());
             return;
         }
         if (c.getGenericSuperclass() instanceof ParameterizedType) {
@@ -195,7 +197,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
             try {
                 Constructor<A> ac = a.getConstructor();
                 A aa = ac.newInstance();
-                aa.setFrag(this);
+                aa.init(getBaseUIFrag());
                 opes.setUi(aa);
             } catch (Exception e) {
                 e.printStackTrace();
