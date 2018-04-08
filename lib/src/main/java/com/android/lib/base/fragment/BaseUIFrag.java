@@ -17,6 +17,8 @@ import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.base.ope.BaseOpes;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.constant.ValueConstant;
+import com.android.lib.databinding.FragDialogCenterBinding;
+import com.android.lib.databinding.LayoutBaseuiBinding;
 import com.android.lib.util.LoadUtil;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.two.FragManager2;
@@ -59,6 +61,8 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
 
     private BaseUIFrag baseUIFrag;
 
+    private LayoutBaseuiBinding layoutBaseuiBinding;
+
 
     public BaseUIFrag() {
         baseUIFrag = this;
@@ -83,7 +87,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View group = inflater.inflate(getBaseUILayout(), container,false);
+        View group = inflater.inflate(getBaseUILayout(),container,false);
         fragIs.onCreateView(inflater,container,savedInstanceState);
         return group;
     }
@@ -99,6 +103,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
                 baseUIRoot = view.findViewById(R.id.container);
                 initaa(baseUIFrag.getClass());
                 baseUIRoot.addView(getP().getU().getBind().getRoot(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                getP().getU().setView(getView());
                 getP().getU().initUI();
                 unbinder = ButterKnife.bind(baseUIFrag, baseUIRoot);
                 initdelay();

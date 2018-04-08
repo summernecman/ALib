@@ -3,6 +3,7 @@ package com.android.lib.base.ope;
 import android.content.Context;
 import android.databinding.ViewDataBinding;
 import android.view.LayoutInflater;
+import android.view.View;
 
 import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.base.fragment.BaseUIFrag;
@@ -22,6 +23,7 @@ public class BaseUIOpe<A extends ViewDataBinding> {
     private A bind;
     private Context context;
     private  BaseUIFrag frag;
+    private View view;
 
     public BaseUIOpe(){
 
@@ -98,5 +100,13 @@ public class BaseUIOpe<A extends ViewDataBinding> {
         }else{
             return (BaseUIActivity) context;
         }
+    }
+
+    public View getView() {
+        return view;
+    }
+
+    public void setView(View view) {
+        this.view = view;
     }
 }

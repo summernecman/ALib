@@ -7,5 +7,10 @@ import com.siweisoft.app.databinding.FragMainBinding;
 
 public class SecUIOpe extends BaseUIOpe<FragMainBinding> {
 
-    
+
+    @Override
+    public void initUI() {
+        super.initUI();
+        getLayoutBaseuiBinding();
+    }
 }

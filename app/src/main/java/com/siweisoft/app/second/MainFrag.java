@@ -2,9 +2,12 @@ package com.siweisoft.app.second;
 
 //by summer on 2018-04-08.
 
+import android.databinding.ViewDataBinding;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import com.android.lib.base.fragment.BaseUIFrag;
+import com.android.lib.databinding.LayoutBaseuiBinding;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.app.R;
@@ -30,6 +33,8 @@ public class MainFrag extends BaseUIFrag<SecUIOpe,SecDAOpe> {
     public int getBaseUILayout() {
         return R.layout.frag_sec;
     }
+
+
 
     @Override
     protected int delayTime() {
