@@ -256,22 +256,22 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
     }
 
     public void startLoading(){
-        loadUtil.startLoading(getActivity(), baseUIRoot);
+        loadUtil.startLoading(getActivity(), (ViewGroup) getView());
     }
 
     public void stopLoading(){
-        loadUtil.stopLoading(baseUIRoot);
+        loadUtil.stopLoading( (ViewGroup) getView());
     }
 
     public void showTips(String txt){
 //        if(getBaseUIAct()==null){
 //            return;
 //        }
-        tipUtil.showTips(getBaseUIAct(), baseUIRoot,txt);
+        tipUtil.showTips(getBaseUIAct(),  (ViewGroup) getView(),txt);
     }
 
     public void removeTips(){
-        tipUtil.removeTips(baseUIRoot);
+        tipUtil.removeTips( (ViewGroup) getView());
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
