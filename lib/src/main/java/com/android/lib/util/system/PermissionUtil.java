@@ -24,8 +24,7 @@ public class PermissionUtil {
     public static final int reqcode = 12345;
 
 
-
-    public boolean is所有的权限都允许(Activity context, String[] permissions){
+    public boolean go检查权限(Activity context, String[] permissions){
         if (checkPermissionAllGranted(context,permissions)) {
             return true;
         }
